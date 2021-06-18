@@ -7,6 +7,7 @@ public class Flamethrower : Weapon
     [SerializeField] public GameObject effect, nozzle;
     [SerializeField] public AudioSource myAudio;
     [SerializeField] public AudioClip fireBurning;
+    [SerializeField] public AudioClip outOfFuel;
 
     GameObject fire;
 
@@ -50,6 +51,15 @@ public class Flamethrower : Weapon
             fire.GetComponent<ParticleSystem>().Stop(true);
             isEmitting = false;
 
+            myAudio.clip = outOfFuel;
+            if (!myAudio.isPlaying)
+            {
+                myAudio.Play();
+            }
+        }
+
+        if (!held && myAudio.isPlaying)
+        {
             myAudio.Stop();
         }
     }

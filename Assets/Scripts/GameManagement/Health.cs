@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
         OnInactive?.Invoke(this.gameObject);
 
         gameObject.SetActive(false);
+        _currentHealth = _maxHealth;
 
         if (_destructible != null)
         {
